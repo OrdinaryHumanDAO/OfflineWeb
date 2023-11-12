@@ -9,18 +9,23 @@
       Title="DownloadPage">
 
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="20,20">
+            <TextBlock Text="URL"
+                       FontSize="15"/>
             <TextBox x:Name="urlInputForm"
-                     TextWrapping="Wrap"
-                     Text="TextBox"
-                     FontSize="12" />
-            <Button Content="Button"
+                     FontSize="20"
+                     SelectionOpacity="-2" />
+            <Button Content="download"
                     HorizontalAlignment="Left"
-                    Click="Button_Click" />
-            <TextBlock x:Name="text1"
+                    Click="Button_Click"
+                    Margin="0,20,0,0"
+                    Padding="5,5" />
+            <TextBlock x:Name="resultText"
                        TextWrapping="Wrap"
-                       Text="TextBlock"
-                       FontSize="36" />
+                       FontSize="20"
+                       Margin="0,20,0,0"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"/>
         </StackPanel>
 
     </Grid>

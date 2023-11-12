@@ -1,9 +1,5 @@
-﻿using AngleSharp;
-using System;
-using System.IO;
-using System.Net;
+﻿using System;
 using System.Windows;
-using System.Windows.Navigation;
 
 namespace OfflineWeb
 {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Enumeration;
-using System.Numerics;
 using System.Windows.Controls;
-using System.Windows.Markup;
 
 
 namespace OfflineWeb
@@ -23,14 +18,19 @@ namespace OfflineWeb
         {
             InitializeComponent();
 
-            string[] dirs = Directory.GetDirectories(App.OfflineInitFilePath + "resouce");
-
-            foreach (var dir in dirs)
+            string resoucePath = App.OfflineInitFilePath + "resouce";
+            if (Directory.Exists(resoucePath))
             {
-                string dirName = Path.GetFileName(dir);
-                if (dirName == null) return;
-                WebPageDirPaths.Add(dir);
-                WebPageDirNames.Add(dirName);
+                string[] dirs = Directory.GetDirectories(App.OfflineInitFilePath + "resouce");
+
+
+                foreach (var dir in dirs)
+                {
+                    string dirName = Path.GetFileName(dir);
+                    if (dirName == null) return;
+                    WebPageDirPaths.Add(dir);
+                    WebPageDirNames.Add(dirName);
+                }
             }
 
             WebPageList.ItemsSource = WebPageDirNames;

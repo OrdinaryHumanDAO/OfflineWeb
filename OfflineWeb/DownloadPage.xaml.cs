@@ -1,20 +1,11 @@
 ﻿using AngleSharp;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OfflineWeb
 {
@@ -31,24 +22,24 @@ namespace OfflineWeb
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var yahooURL = "https://www.yahoo.co.jp/";
-            var wikipediaURL = "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8";
-            var appleURL = "https://www.apple.com/jp/store?afid=p238%7CsKSMckWTz-dc_mtid_18707vxu38484_pcrid_673906064385_pgrid_13140806301_pntwk_g_pchan__pexid__&cid=aos-jp-kwgo-brand--slid---product-";
-            var aaaURL = "https://hurugiblog.com/talon-zipper";
-
             try
             {
+                if (IsNotUrl(urlInputForm.Text)) throw new Exception();
                 saveWebPage(urlInputForm.Text);
-                text1.Text = "保存しました";
+                resultText.Text = "保存しました";
+                resultText.Visibility = Visibility.Visible;
+                resultText.Background = new SolidColorBrush(System.Windows.Media.Colors.LightGreen);
             }
-            catch (Exception ex)
+            catch
             {
-                text1.Text = "エラーが発生しました。";
+                resultText.Text = "ウェブページを取得できませんでした";
+                resultText.Visibility = Visibility.Visible;
+                resultText.Background = new SolidColorBrush(System.Windows.Media.Colors.OrangeRed);
             }
 
         }
 
-        public async void saveWebPage(string url)
+        public void saveWebPage(string url)
         {
             Uri baseURI = new Uri(url);
             var parser = new AngleSharp.Html.Parser.HtmlParser();
@@ -178,6 +169,18 @@ namespace OfflineWeb
             {
                 throw exc;
             }
+        }
+
+        public static bool IsNotUrl(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return false;
+            }
+            return !Regex.IsMatch(
+               input,
+               @"^s?https?://[-_.!~*'()a-zA-Z0-9;/?:@&=+$,%#]+$"
+            );
         }
     }
 
