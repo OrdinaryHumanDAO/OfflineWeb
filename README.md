@@ -8,4 +8,4 @@ Desktop application for viewing websites in an offline environment
 [](https://github.com/OrdinaryHumanDAO/OfflineWeb/releases/download/v1.0.0/OfflineWeb-v1.0.0.zip)https://github.com/OrdinaryHumanDAO/OfflineWeb/releases/download/v1.0.0/OfflineWeb-v1.0.0.zip
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/OrdinaryHumanDAO/console-video/blob/master/LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/OrdinaryHumanDAO/OfflineWeb/blob/master/LICENSE.txt) file for details
